@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@theme inline {
+  --font-sans: 'Inter', system-ui, sans-serif;
+
+  /* Google Classroom Color Palette */
+  --color-background: #ffffff;
+  --color-foreground: #202124;
+  
+  --color-card: #ffffff;
+  --color-card-foreground: #202124;
+  
+  --color-primary: #1a73e8;
+  --color-primary-foreground: #ffffff;
+  
+  --color-secondary: #f8f9fa;
+  --color-secondary-foreground: #202124;
+  
+  --color-muted: #f1f3f4;
+  --color-muted-foreground: #5f6368;
+  
+  --color-accent: #e8f0fe;
+  --color-accent-foreground: #1967d2;
+  
+  --color-border: #dadce0;
+  --color-input: #dadce0;
+  --color-ring: #1a73e8;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}

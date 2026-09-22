@@ -1,0 +1,76 @@
+Redesign the existing Google Classroom student interface with a focus on improving usability, content organization, and task management.
+
+Do NOT create a completely different type of application. Keep the familiar concept of Google Classroom and its academic classroom experience, but improve the way students find and manage content inside a specific subject.
+
+MAIN REDESIGN CONCEPT:
+
+When a student opens a subject/class, organize the subject into three clear primary sections in this order:
+
+ANNOUNCEMENTS
+MATERIALS
+ACTIVITIES
+
+The Subject Home page should immediately show these three sections.
+
+ANNOUNCEMENTS
+
+Place Announcements first because students need to see important and time-sensitive class information immediately.
+
+Design an announcements section that shows:
+
+* Latest announcement
+* Announcement title
+* Short preview
+* Date posted
+* "View all" option
+* Important announcement indicator when appropriate
+
+Allow students to open a dedicated Announcements page where they can view all announcements in chronological order.
+
+MATERIALS
+
+Create a dedicated Materials section for learning resources.
+
+Organize materials into clear categories:
+
+* PowerPoint Presentations
+* Lecture Materials
+* References
+* Other learning resources
+
+Use recognizable file icons and cards so students can immediately identify the type of resource.
+
+Include:
+
+* File name
+* File type
+* Date uploaded
+* Short description when available
+* Search materials function
+* Category/filter options
+
+The goal is to make finding a PowerPoint or learning material much faster than searching through a long classroom feed.
+
+ACTIVITIES
+
+Create a dedicated Activities section for academic tasks.
+
+Inside Activities, provide three clear categories:
+
+* Activities
+* Projects
+* Quizzes
+
+Each task card should display:
+
+* Title
+* Short description
+* Due date
+* Submission status
+* Appropriate status indicator
+
+Use simple status labels such as:
+
+* Not Started
+* In Progress
+* Submitt

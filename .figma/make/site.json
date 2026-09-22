@@ -1,0 +1,14 @@
+{
+  "title": "Figma | Google Classroom",
+  "icons": {
+    "icon": "/classroom-logo.png"
+  },
+  "description": "Enhance the student experience in Google Classroom with improved usability, organized content, and efficient task management for seamless academic engagement.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}
