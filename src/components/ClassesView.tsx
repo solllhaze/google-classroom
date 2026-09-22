@@ -127,13 +127,13 @@ export default function ClassesView({
               onClick={() => onSelectCourse(course.id)}
             >
               {/* Header Banner */}
-              <div className={`p-5 text-white relative ${course.theme} transition-transform min-h-[152px] flex flex-col justify-between`}>
+              <div className={`p-5 text-white relative ${course.theme} transition-transform h-[160px] flex flex-col justify-between overflow-hidden`}>
                 <div className="flex justify-between items-start">
                   <div className="space-y-1 pr-6">
                     <span className="inline-block px-2 py-0.5 text-[11px] font-bold bg-white/20 backdrop-blur-sm rounded-md tracking-wider">
                       {course.code}
                     </span>
-                    <h3 className="text-xl font-bold tracking-tight hover:underline leading-snug">
+                    <h3 className="text-xl font-bold tracking-tight leading-snug line-clamp-2">
                       {course.name}
                     </h3>
                     <div className="flex flex-wrap items-center gap-2 pt-0.5">
