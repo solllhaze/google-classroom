@@ -114,7 +114,7 @@ export default function ClassesView({
       </div>
 
       {/* Grid of Enrolled Subject Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
         {filteredCourses.map(course => {
           const courseTasks = activities[course.id] || [];
           const pendingTasks = courseTasks.filter(t => t.status !== 'Submitted');
@@ -123,7 +123,7 @@ export default function ClassesView({
           return (
             <div 
               key={course.id}
-              className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-md transition-all duration-200 flex flex-col group cursor-pointer"
+              className="bg-white border border-border rounded-2xl overflow-hidden hover:shadow-md transition-all duration-200 flex flex-col group cursor-pointer h-full"
               onClick={() => onSelectCourse(course.id)}
             >
               {/* Header Banner */}
@@ -160,8 +160,8 @@ export default function ClassesView({
               </div>
 
               {/* Card Body */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-                <div className="space-y-3">
+              <div className="p-5 flex-1 flex flex-col gap-4">
+                <div className="space-y-3 flex-1">
                   <div className="text-xs text-muted-foreground flex items-center gap-1.5">
                     <Clock className="w-3.5 h-3.5 text-gray-500" />
                     <span>{course.schedule}</span>
