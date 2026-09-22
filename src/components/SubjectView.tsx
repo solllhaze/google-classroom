@@ -7,16 +7,14 @@ import {
   File,
   Search,
   BookOpen,
+  PlayCircle,
   Clock,
   CheckCircle2,
   Circle,
   AlertCircle,
-  MoreVertical,
   Filter,
   FileArchive,
-  Users,
   Award,
-  Calendar,
   Layers,
   Check
 } from 'lucide-react';
@@ -60,7 +58,7 @@ function FileIcon({ type }: { type: string }) {
     case 'ppt':
       return <div className="p-2 bg-orange-100 text-orange-600 rounded-lg shrink-0"><Presentation className="w-5 h-5" /></div>;
     case 'video':
-      return <div className="p-2 bg-red-100 text-red-600 rounded-lg shrink-0"><BookOpen className="w-5 h-5" /></div>;
+      return <div className="p-2 bg-purple-100 text-purple-600 rounded-lg shrink-0"><PlayCircle className="w-5 h-5" /></div>;
     case 'pdf':
       return <div className="p-2 bg-red-100 text-red-600 rounded-lg shrink-0"><FileText className="w-5 h-5" /></div>;
     case 'doc':
@@ -453,18 +451,30 @@ export default function SubjectView({
         </div>
       )}
 
-      {courseTab === 'grades' && (
+      {courseTab === 'grades' && (() => {
+        const submittedTasks = activities.filter(a => a.status === 'Submitted');
+        const totalPoints = submittedTasks.reduce((sum, a) => sum + a.points, 0);
+        const maxPoints = activities.reduce((sum, a) => sum + a.points, 0);
+        const pct = maxPoints > 0 ? Math.round((totalPoints / maxPoints) * 1000) / 10 : null;
+        const standing = pct === null ? 'No data yet' : pct >= 90 ? 'High Passing' : pct >= 75 ? 'Passing' : 'Below Average';
+        const gradeLabel = pct === null ? '—' : pct >= 90 ? '1.25' : pct >= 83 ? '1.75' : pct >= 75 ? '2.25' : '3.00';
+
+        return (
         /* Grades View */
         <div className="space-y-6">
           <div className="p-6 bg-gradient-to-r from-emerald-600 to-teal-700 text-white rounded-2xl shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <p className="text-xs uppercase font-bold text-emerald-100">Overall Course Standing</p>
-              <h2 className="text-3xl font-bold mt-1">94.5% (Grade: 1.25)</h2>
-              <p className="text-xs text-emerald-100 mt-1">Status: High Passing • {course.credits} Credits</p>
+              {pct !== null ? (
+                <h2 className="text-3xl font-bold mt-1">{pct}% (Grade: {gradeLabel})</h2>
+              ) : (
+                <h2 className="text-3xl font-bold mt-1">No submissions yet</h2>
+              )}
+              <p className="text-xs text-emerald-100 mt-1">Status: {standing} • {course.credits} Credits</p>
             </div>
             <div className="px-4 py-2 bg-white/20 backdrop-blur-md rounded-xl text-center">
               <p className="text-xs text-emerald-100 uppercase font-semibold">Evaluated Items</p>
-              <p className="text-xl font-bold mt-0.5">{activities.filter(a => a.status === 'Submitted').length} of {activities.length}</p>
+              <p className="text-xl font-bold mt-0.5">{submittedTasks.length} of {activities.length}</p>
             </div>
           </div>
 
@@ -490,7 +500,8 @@ export default function SubjectView({
             ))}
           </div>
         </div>
-      )}
+        );
+      })()}
     </div>
   );
 }

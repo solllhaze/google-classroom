@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Menu,
   Plus,
@@ -54,6 +54,20 @@ export default function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const [isJoinModalOpen, setIsJoinModalOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
+  const profileMenuRef = useRef<HTMLDivElement>(null);
+
+  // Close profile dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (profileMenuRef.current && !profileMenuRef.current.contains(e.target as Node)) {
+        setIsProfileMenuOpen(false);
+      }
+    }
+    if (isProfileMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [isProfileMenuOpen]);
   
   // Modals state
   const [selectedTaskModal, setSelectedTaskModal] = useState<{ activity: Activity; course: Course } | null>(null);
@@ -190,7 +204,7 @@ export default function App() {
           </button>
 
           {/* Student profile avatar */}
-          <div className="relative">
+          <div className="relative" ref={profileMenuRef}>
             <button
               onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
               className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-sm ml-2 cursor-pointer ring-2 ring-transparent hover:ring-blue-300 transition-all"
